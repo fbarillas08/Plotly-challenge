@@ -6,7 +6,9 @@ function buildMetadata(samplenumber) {
         //console.log(metadata);
         var sample = metadata.filter(d => d.id == samplenumber);
         sample = sample[0];
-        // console.log(sample);
+        washfreq = sample.wfreq;      
+        //console.log(sample);
+        //console.log(washfreq);
         var demographics = d3.select("#sample-metadata");
         demographics.html("");
         Object.entries(sample).forEach(([key,value]) => {
@@ -84,12 +86,34 @@ function buildCharts(samplenumber) {
             xaxis:{title: "OTU ID"},
             // height: 600,
             // width: 1300
-        }                  
-   
+        }
+        
+        gaugeTrace ={
+            domain: { x: [0, 1], y: [0, 1] },
+		    value: washfreq,
+		    title: { text: "Wash Frequency" },
+		    type: "indicator",
+		    mode: "gauge+number",
+            gauge: {
+                axis:  {range: [null,10]},
+                steps: [
+                    {range: [0,3], color: "lightblue"},
+                    {range: [3,7], color: "blue"},
+                    {range: [7,10], color: "darkblue"},
+                ],
+            }
+	    }
+
+        var gaugelayout = { 
+            width: 600, 
+            height: 500, 
+            margin: { t: 0, b: 0 } 
+        };                  
 
     Plotly.newPlot("bar",[barTrace]);
     Plotly.newPlot("pie",[pieTrace]);
     Plotly.newPlot("bubble",[bubbleTrace],bubblelayout);
+    Plotly.newPlot("gauge",[gaugeTrace],gaugelayout);
         
 })};    
 
