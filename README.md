@@ -14,3 +14,6 @@ Additional tasks were completed:
   - Created a gauge chart to illustrate the frequency of navel cleaning by each subject
   - modified the referenced style css with an updated css file to customized the look of the page
 
+Challenged unresolved:
+
+My css style was unable to override the html-based css stylesheet for various items on the website specially the font size of the metadata table.  I need to research why it won't let me change the font and other attributes.
