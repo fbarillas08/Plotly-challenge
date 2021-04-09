@@ -35,6 +35,7 @@ function init(){
 
 function dropdownChange(newSample){    
     buildMetadata(newSample);
+    buildCharts(newSample)
 }
 
 
